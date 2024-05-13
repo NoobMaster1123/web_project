@@ -59,7 +59,7 @@
                                 <li><a class="dropdown-item  text-white" href="carts/cart.html">История</a></li>
                                 <li><a class="dropdown-item  text-white" href="users/profile.html">Личный кабинет</a>
                                 </li>
-                                <li><a class="dropdown-item  text-white" href="#">Админ панель</a></li>
+                                <li><a class="dropdown-item  text-white" href="{% url "admin:index" %}">Админ панель</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -88,10 +88,14 @@
                             height="16">
                     </button>
                     <ul class="dropdown-menu bg-dark" data-bs-theme="dark">
-                        <li><a class="dropdown-item text-white" href="{% url "catalog:index" %}">Фильмы</a></li>
+                        {% for category in categories %}
+                            <li><a class="dropdown-item text-white" href="{% url "catalog:index" %}">{{category.name}}</a></li>
+                        {% endfor %}
+                        <li><a class="dropdown-item text-white" href="{% url "catalog:index" %}">Все</a></li>
+                        {% comment %} <li><a class="dropdown-item text-white" href="{% url "catalog:index" %}">Фильмы</a></li>
                         <li><a class="dropdown-item text-white" href="{% url "catalog:index" %}">Сериалы</a></li>
-                        <li><a class="dropdown-item text-white" href="{% url "catalog:index" %}">Мультсериалы</a></li>
-                        <li><a class="dropdown-item text-white" href="{% url "catalog:index" %}">Аниме</a></li>
+                        <li><a class="dropdown-item text-white" href="{% url "catalog:index" %}">Мультфильмы</a></li>
+                        <li><a class="dropdown-item text-white" href="{% url "catalog:index" %}">Аниме</a></li> {% endcomment %}
                     </ul>
                 </div>
                 <!-- Значек корзины, вызывает модальное окно -->
