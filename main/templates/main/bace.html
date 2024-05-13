@@ -88,10 +88,10 @@
                             height="16">
                     </button>
                     <ul class="dropdown-menu bg-dark" data-bs-theme="dark">
-                        <li><a class="dropdown-item text-white" href="goods/catalog.html">Фильмы</a></li>
-                        <li><a class="dropdown-item text-white" href="goods/catalog.html">Сериалы</a></li>
-                        <li><a class="dropdown-item text-white" href="goods/catalog.html">Мультсериалы</a></li>
-                        <li><a class="dropdown-item text-white" href="goods/catalog.html">Аниме</a></li>
+                        <li><a class="dropdown-item text-white" href="{% url "catalog:index" %}">Фильмы</a></li>
+                        <li><a class="dropdown-item text-white" href="{% url "catalog:index" %}">Сериалы</a></li>
+                        <li><a class="dropdown-item text-white" href="{% url "catalog:index" %}">Мультсериалы</a></li>
+                        <li><a class="dropdown-item text-white" href="{% url "catalog:index" %}">Аниме</a></li>
                     </ul>
                 </div>
                 <!-- Значек корзины, вызывает модальное окно -->
