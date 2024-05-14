@@ -13,9 +13,26 @@
                         {% endif %}
                         <div class="card-body">
                             <a href="{% url "catalog:movie" movie.slug %}">
-                                <p class="card-title">{{movie.name}}</p>
+                                <p class="card-title">
+                                    {% autoescape off %}
+                                        {% if movie.headline %}
+                                        {{movie.headline}}
+                                        {% else %}
+                                        {{movie.name}}
+                                        {% endif %}
+                                    {% endautoescape %}
+                                </p>
                             </a>
-                            <p class="card-text">{{movie.description|truncatechars:35}}</p>
+                            <p class="card-text">
+                                {% autoescape off %}
+                                    {% if movie.bodyline %}
+                                    {{movie.bodyline|truncatechars:100}}
+                                    {% else %}
+                                    {{movie.description|truncatechars:35}}
+                                    {% endif %}
+                                {% endautoescape %}
+                                {% comment %} {{movie.description|truncatechars:35}} {% endcomment %}
+                            </p>
                             <p class="product_id">id: {{movie.display_id}}</p>
                             <div class="d-flex justify-content-between">
                                 <p><strong>{{movie.grade}}</strong></p>
