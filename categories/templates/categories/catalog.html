@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="row">
-        {% for movie in categories %}
+        {% for movie in categori %}
                 <!-- Карта -->
                 <div class="col-lg-4 col-md-6 p-4">
                     <div class="card border-primary rounded custom-shadow">
@@ -16,7 +16,7 @@
                                 <p class="card-title">{{movie.name}}</p>
                             </a>
                             <p class="card-text text-truncate">{{movie.description}}</p>
-                            <p class="product_id">id: 02265</p>
+                            <p class="product_id">id: {{movie.display_id}}</p>
                             <div class="d-flex justify-content-between">
                                 <p><strong>{{movie.grade}}</strong></p>
                                 <a href="#" class="btn">

@@ -4,11 +4,11 @@ from categories.models import Movie
 
 def catalog(request):
 
-    categories = Movie.objects.all()
+    categori = Movie.objects.all()
     
     context = {
         'title': 'Home - Каталог',
-        'categories': categories
+        'categori': categori
     }
     return render(request, 'categories/catalog.html', context)
 
