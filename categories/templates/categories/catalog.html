@@ -15,7 +15,7 @@
                             <a href="{% url "catalog:movie" movie.slug %}">
                                 <p class="card-title">{{movie.name}}</p>
                             </a>
-                            <p class="card-text text-truncate">{{movie.description}}</p>
+                            <p class="card-text">{{movie.description|truncatechars:35}}</p>
                             <p class="product_id">id: {{movie.display_id}}</p>
                             <div class="d-flex justify-content-between">
                                 <p><strong>{{movie.grade}}</strong></p>
@@ -34,14 +34,26 @@
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center my-4">
                 <div class="custom-shadow d-flex">
-                    <li class="page-item disabled">
-                    <a class="page-link">Previous</a>
+                    <li class="page-item {% if not categori.has_previous %}disabled{% endif %}">
+                    <a class="page-link" href="{% if categori.has_previous %}
+                    {% url "catalog:index" slug_url categori.previous_page_number %}
+                    {% else %}
+                    #
+                    {% endif %}"> Назад </a>
                     </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
+                    {% for page in categori.paginator.page_range %}
+                        {% if page >= categori.number|add:-2 and page <= categori.number|add:2 %}                    
+                            <li class="page-item {% if categori.number == page %} active {% endif %}">
+                                <a class="page-link" href="{% url "catalog:index" slug_url page %}">{{ page }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    <li class="page-item {% if not categori.has_next %}disabled{% endif %}">
+                        <a class="page-link" href="{% if categori.has_next %}
+                        {% url "catalog:index" slug_url categori.next_page_number %}
+                        {% else %}
+                        #
+                        {% endif %}"> Следующая </a>
                     </li>
                 </div>
             </ul>

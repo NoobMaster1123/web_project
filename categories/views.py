@@ -1,15 +1,22 @@
-from django.shortcuts import render
-from django.template import context
+from django.core.paginator import Paginator
+from django.shortcuts import get_list_or_404, render
 
 from categories.models import Movie
 
-def catalog(request):
+def catalog(request, category_slug, page=1):
 
-    categori = Movie.objects.all()
-    
+    if category_slug == 'all':
+        categori = Movie.objects.all()
+    else:
+        categori = get_list_or_404(Movie.objects.filter(category__slug=category_slug))
+        
+    paginator = Paginator(categori, 3)
+    current_page = paginator.page(page)
+
     context = {
         'title': 'Home - Каталог',
-        'categori': categori
+        'categori': current_page,
+        'slug_url': category_slug
     }
     return render(request, 'categories/catalog.html', context)
 

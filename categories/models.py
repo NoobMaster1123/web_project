@@ -27,6 +27,7 @@ class Movie(models.Model):
         db_table = 'content'
         verbose_name = 'Контент'
         verbose_name_plural = 'Контент'
+        ordering = ("id",)
     
     def __str__(self):
         return self.name
