@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.template import context
 
 from categories.models import Movie
 
@@ -13,5 +14,11 @@ def catalog(request):
     return render(request, 'categories/catalog.html', context)
 
 
-def movie(request):
-    return render(request, 'categories/movie.html')
+def movie(request, movie_slug):
+
+    movie= Movie.objects.get(slug=movie_slug)
+
+    context = {
+        'movie': movie
+    }
+    return render(request, 'categories/movie.html', context=context)

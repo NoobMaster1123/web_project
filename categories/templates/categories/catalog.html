@@ -12,7 +12,7 @@
                             <img src="{{movie.image.url}}" class="card-img-top" alt="...">
                         {% endif %}
                         <div class="card-body">
-                            <a href="#">
+                            <a href="{% url "catalog:movie" movie.slug %}">
                                 <p class="card-title">{{movie.name}}</p>
                             </a>
                             <p class="card-text text-truncate">{{movie.description}}</p>
