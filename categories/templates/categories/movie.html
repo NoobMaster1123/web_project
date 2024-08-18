@@ -36,7 +36,7 @@
                 <p class="card-text">Оценка: <strong>{{movie.grade}}</strong></p>
                 <h5 class="card-title">{{movie.name}}</h5>
                 <p class="card-text">{{movie.description}}</p>
-                <a href="#" class="btn btn-dark add-to-cart">Оставить комментарий</a>
+                <a href="{% url "comments:comments" %}" class="btn btn-dark add-to-cart">Оставить комментарий</a>
             </div>
         </div>
     </div>

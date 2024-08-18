@@ -1,0 +1,19 @@
+{% extends "bace.html" %}
+{% load static %}
+
+{% block content %}
+{{title}}
+<div class="container mt-5">
+    <div class="card mb-4 custom-shadow">
+        <h1>Комментарий</h1>
+        <form mothod='post'>
+            {% csrf_token %}
+            {{form.tittle}}
+            {{form.task}}
+            <input type="text" placeholder='Введите имя' class='form-control'><br>
+            <textarea placeholder='Введите комментарий' class='form-control'></textarea><br>
+            <button type='submit' class='btn btn-success'>Добавить</button>
+        </form>
+    </div>
+</div> 
+{% endblock content %}
